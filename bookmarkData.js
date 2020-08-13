@@ -40,4 +40,4 @@ export default async function loadBookmarks() {
     } catch (err) { 
         console.error(`failed to Load Bookmark Data: ${err}`);
     }
-    }
+}
