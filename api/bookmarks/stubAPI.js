@@ -2,27 +2,21 @@ import _ from 'lodash';
 
   const bookmarks = [
          {id: 1,
-            title: 'India - Tiger population sees 30% increase.',
-            link: 'http://www.bbc.com/news/world-asia-30896028',
+            title: 'Google15',
+            link: 'www.google.com',
             visits: 2,
           },
          {
             id: 2,
-            title: 'The button that is not.',
-            link: 'http://blog.nuclearsecrecy.com/2014/12/15/button-isnt/',
+            title: 'Youtube.',
+            link: 'www.youtube.com',
             visits: 2,
           },
           {
             id: 3,
-            title: 'Google Nears $1B Investment in SpaceX',
-            link: "www.google.com",
+            title: 'Microsoft',
+            link: "www.microsoft.com",
             visits: 55,
-          },
-          {
-            id: 4,
-            title: 'Coinbase Raises $75M from DFJ Growth, USAA, and More',
-            link: 'http://blog.coinbase.com/',
-            visits: 2,
           },
       ];
 
