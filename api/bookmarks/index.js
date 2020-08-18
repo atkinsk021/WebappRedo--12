@@ -1,67 +1,55 @@
 import express from 'express';
-import {bookmarks} from './bookmarks';
-//import stubAPI from './stubAPI';
+//import {bookmarks} from './bookmarks';
+import Bookmark from './bookmarkModel';
+import asyncHandler from 'express-async-handler';
 
 const router = express.Router();
 
-//GET REQUEST
-router.get('/', (req, res) => {
-  res.send({ bookmarks: bookmarks });
+// Get all bookmarks, using try/catch to handle errors
+router.get('/', async (req, res) => {
+  try {
+    const bookmarks = await Bookmark.find();
+    res.status(200).json(bookmarks);
+  } catch (error) {
+    handleError(res, error.message);
+  }
 });
 
-//POST REQUEST
-router.post('/', (req, res) => {
-        let newBookmark = req.body;
-        if (newBookmark){
-          bookmarks.push({title: newBookmark.title, link : newBookmark.link}) ;
-          res.status(201).send({message: "Bookmark Created"});
-      }else{
-            res.status(400).send({message: "No Bookmark Found in request"});
-      }
-});
+// Create a bookmark, using async handler
+router.post('/', asyncHandler(async (req, res) => {
+  const bookmark = await Bookmark.create(req.body);
+  res.status(201).json(bookmark);
+}));
 
-//UPDATE REQUEST
-router.put('/:id', (req, res) => {
-  const key = req.params.id;
-  const updateBookmark = req.body;
-  const index = bookmarks.map((bookmark)=>{
-return bookmark.link;
-}).indexOf(key);
-         if (index !== -1) {
-            bookmarks.splice(index, 1, {title: updateBookmark.title, link: updateBookmark.link});
-            res.status(200).send({message: 'Bookmark successfully updated'});
-           } else {
-       res.status(400).send({message: 'Unable to find Bookmark in request. No update has taken place'});
-   }
-});
+// Update a bookmark
+router.put('/:id', asyncHandler(async (req, res) => {
+  if (req.body._id) delete req.body._id;
+  const bookmark = await Bookmark.update({
+    _id: req.params.id,
+  }, req.body, {
+    upsert: false,
+  });
+  if (!bookmark) return res.sendStatus(404);
+  return res.json(200, bookmark);
+}));
 
-//DELETE REQUEST
-router.delete('/:id', (req, res) => {
-  const key = req.params.id;
-  const index = bookmarks.map((bookmark)=>{
-return bookmark.link;
-}).indexOf(key);
- if (index > -1) {
-bookmarks.splice(index, 1);
-     res.status(200).send({message: `Deleted bookmark : ${key}.`});
- } else {
-   res.status(400).send({message: `Unable to find bookmark of link : ${key}.`});
-   }
-});
+// Delete a contact
+router.delete('/:id', asyncHandler(async (req, res) => {
+  const bookmark = await Bookmark.findById(req.params.id);
+  if (!bookmark) return res.send(404);
+  await bookmark.remove();
+  return res.status(204).send(bookmark);
+}));
 
-/*
-// upvote a post
-router.post('/:id/visit', (req, res) => {
-  const key = req.params.id;
-  const visitBookmark = req.body;
-  const index = bookmarks.map((bookmark)=>{
-    return bookmark.link;
-  }).indexOf(key);
-    if (index !== -1) {
-              res.status(200).send({message: `Bookmark ${id} visited`});
-            } else {
-         return res.status(404).send({message: `Unable to find Bookmark ${id}`});
-            }
-});
-*/
+
+/**
+ * Handle general errors.
+ * @param {object} res The response object
+ * @param {object} err The error object.
+ * @return {object} The response object
+ */
+function handleError(res, err) {
+  return res.send(500, err);
+};
+
 export default router;
