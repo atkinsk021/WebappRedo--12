@@ -2,7 +2,7 @@ import dotenv from 'dotenv';
 import express from 'express';
 import bookmarksRouter from './api/bookmarks';
 import bodyParser from 'body-parser';
-import './db';
+import './db'
 import loadBookmarks from './bookmarkData';
 
 
@@ -23,6 +23,7 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
+app.use(express.static('public'));
 
 app.use('/api/bookmarks', bookmarksRouter);
 app.use(express.static('public'));

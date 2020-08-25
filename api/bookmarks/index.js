@@ -5,11 +5,6 @@ import asyncHandler from 'express-async-handler';
 
 const router = express.Router();
 
-router.get('/', asyncHandler(async (req, res) => {
-  const bookmarks = await Bookmark.find();
-  return res.send(bookmarks);
-}));
-
 // Get all bookmarks, using try/catch to handle errors
 router.get('/', async (req, res) => {
   try {
@@ -18,7 +13,6 @@ router.get('/', async (req, res) => {
   } catch (error) {
     handleError(res, error.message);
   }
-  //console.log("getgetgetgetget");
 });
 
 // Create a bookmark, using async handler
