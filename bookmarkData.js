@@ -1,7 +1,7 @@
 import bookmarkModel from './api/bookmarks/bookmarkModel';
 
 const bookmarks = [{
-    'title': 'Database Google',
+    'title': 'DatabaseSeed Google',
     'link': 'www.google.com',
     'visits': '132',
   },
