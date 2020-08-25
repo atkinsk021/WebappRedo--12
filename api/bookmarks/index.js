@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
         let newBookmark = req.body;
         if (newBookmark){
-          bookmarks.push({title: newBookmark.title, link : newBookmark.link}) ;
+          bookmarks.push({title: newBookmark.title, link : newBookmark.link, visits: newBookmark.visits}) ;
           res.status(201).send({message: "Bookmark Created"});
       }else{
             res.status(400).send({message: "No Bookmark Found in request"});
@@ -49,7 +49,7 @@ bookmarks.splice(index, 1);
    }
 });
 
-/*
+
 // upvote a post
 router.post('/:id/visit', (req, res) => {
   const key = req.params.id;
@@ -63,5 +63,5 @@ router.post('/:id/visit', (req, res) => {
          return res.status(404).send({message: `Unable to find Bookmark ${id}`});
             }
 });
-*/
+
 export default router;
