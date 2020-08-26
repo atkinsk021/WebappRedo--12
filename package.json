@@ -4,22 +4,32 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "cross-env NODE_ENV=test mocha './api/**/tests/*.js --require babel-core/register --require babel-polyfill --exit",
     "start": "nodemon --ignore WebappRedo-1/* --exec babel-node index.js"
   },
   "author": "Kevin Atkins",
   "license": "ISC",
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.7.0",
-    "nodemon": "^2.0.4"
+    "mocha": "^8.1.2",
+    "mockgoose": "^8.0.4",
+    "nodemon": "^2.0.4",
+    "should": "^13.2.3",
+    "sinon": "^9.0.3",
+    "sinon-test": "^3.0.0",
+    "supertest": "^4.0.2"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
+    "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-async-handler": "^1.1.4",
     "lodash": "^4.17.19",
-    "mongoose": "^5.10.0"
+    "mongoose": "^5.10.0",
+    "save-dev": "0.0.1-security"
   }
 }

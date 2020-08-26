@@ -11,9 +11,7 @@ dotenv.config();
 export const app = express();
 
 const port = process.env.PORT;
-if (process.env.seedDb) {
-  loadBookmarks();
-}
+
 //configure body-parser
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
