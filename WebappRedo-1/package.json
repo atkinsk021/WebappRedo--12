@@ -1,0 +1,44 @@
+{
+  "name": "bookmarkvault",
+  "version": "0.1.0",
+  "proxy": "http://localhost:8080",
+  "private": true,
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.17",
+    "@fortawesome/free-solid-svg-icons": "^5.8.1",
+    "@fortawesome/react-fontawesome": "^0.1.4",
+    "axios": "^0.19.2",
+    "bootstrap": "^4.4.1",
+    "lodash": "^4.17.15",
+    "react": "^16.8.0",
+    "react-bootstrap": "^1.0.0-beta.16",
+    "react-dom": "^16.8.0",
+    "react-form-with-constraints": "^0.14.0",
+    "react-google-maps": "^9.4.5",
+    "react-linkify": "^1.0.0-alpha",
+    "react-router-dom": "^4.3.1",
+    "react-router-hash-link": "^1.2.2",
+    "react-scripts": "^3.4.1",
+    "superagent": "^5.0.3"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "devDependencies": {
+    "@storybook/addon-actions": "^5.2.1",
+    "@storybook/react": "^5.2.1",
+    "cypress": "^3.1.5"
+  }
+}

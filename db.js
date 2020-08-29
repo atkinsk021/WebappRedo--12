@@ -2,18 +2,18 @@ import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import {Mockgoose} from 'mockgoose';
 
+//CONNECT TO THE DATABASE
 dotenv.config();
 
-// Connect to database
-// Connect to database
 if (process.env.NODE_ENV === 'test') {
-    // use mockgoose for testing
+
+  //USE MOCKGOOSE FOR THE TESTS
     const mockgoose=new Mockgoose(mongoose);
     mockgoose.prepareStorage().then(()=>{
       mongoose.connect(process.env.mongoDB);
     });
   } else {
-    // use the real deal for everything else
+    //USE ACTUAL MONGOOSE FOR THE REST
     mongoose.connect(process.env.mongoDB);
   }
   

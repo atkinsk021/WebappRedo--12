@@ -5,6 +5,7 @@ import should from 'should';
 // UNIT TEST BEGIN
 describe('Bookmarks API test', function () {
     this.timeout(120000);
+    
     // TEST 1 - RETURN A COLLECTION OF JSON DOCUMENTS
     it('should return collection of JSON documents', function (done) {
         supertest(app)

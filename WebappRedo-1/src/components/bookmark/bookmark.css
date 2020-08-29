@@ -1,0 +1,29 @@
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+  }
+
+.card-body  {
+    word-break:break-all
+}
+
+.card-title  {
+    text-align: center;
+}
+
+.card-visits  {
+    text-align: center;
+}
+
+.card-link  {
+    text-align:"center";
+    padding: 10px 15px;
+    border-radius: 10px;
+    background-color: lightgrey;
+}
+
+.card  {
+    background-color: #a9bcae;
+}
