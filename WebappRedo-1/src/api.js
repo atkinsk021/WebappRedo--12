@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+//API FOR EXPRESS APP
+
 export const visit = bookmarkId => {
   return axios.post(`/api/bookmarks/${bookmarkId}/visit`)
               .then(resp => resp.data);

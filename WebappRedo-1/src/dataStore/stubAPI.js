@@ -24,12 +24,6 @@ class StubAPI {
             },
             {
               id: 4,
-              title: 'dsfsdfsdfsdfsdf',
-              link: 'www.sdfkjnsdf.com',
-              visits: '43',
-            },
-            {
-              id: 5,
               title: 'Twitch',
               link: 'www.twitch.com',
               visits: '6',
